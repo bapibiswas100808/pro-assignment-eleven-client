@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import headerImage from "../../assets/D.png";
 
 const Header = () => {
   return (
@@ -24,7 +25,7 @@ const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-[#008080] rounded-box w-52"
             >
               <li>
                 <NavLink to="/">Home</NavLink>
@@ -51,8 +52,15 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <Link to="/" className="text-xl">
-            DreamDay Event
+          <Link to="/" className="text-xl font-bold flex items-top gap-3">
+            <div>
+              <img className="h-16" src={headerImage} alt="" />
+            </div>
+            <div>
+              <span>DreamDay</span> <br />
+              <span className="text-[#001F3F] mr-2">Event</span>
+              <span className="text-[#FF6F61]">Manager</span>
+            </div>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -86,7 +94,19 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link className="btn">Log In</Link>
+          <Link to="/login" className="btn project-btn">
+            Log In
+          </Link>
+          <div className="flex items-center gap-5">
+            <div className="w-10 rounded-full">
+              <img
+                alt="Tailwind CSS Navbar component"
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                className="rounded-full"
+              />
+            </div>
+            <Link className="btn project-btn">Log Out</Link>
+          </div>
         </div>
       </div>
     </div>

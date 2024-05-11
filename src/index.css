@@ -26,6 +26,13 @@ button {
 #selectBox option:first-child {
   display: none;
 }
+.project-btn {
+  background-color: #008080;
+  color: white;
+}
+.project-btn:hover {
+  background-color: black;
+}
 /* 
-Royal Blue: #4169E1
+#FF6F61
 Gold: #FFD700 */
