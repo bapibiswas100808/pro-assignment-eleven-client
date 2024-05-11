@@ -1,37 +1,49 @@
 import { Link } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
 
-const Login = () => {
-  const handleLogin = (e) => {
+const Register = () => {
+  const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    const photo = form.photo.value;
+    console.log(name, email, password, photo);
   };
   return (
     <div className="max-w-[1170px] mx-auto">
       <div className="hero min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
+            <h1 className="text-5xl font-bold">Register now!</h1>
             <p className="py-6">
-              DreamDay Event Managers login portal offers seamless access for
-              clients and partners, providing secure and convenient management
-              of event details, guest lists, and collaboration tools for
-              flawless execution
+              Register with DreamDay Event Manager to unlock exclusive features
+              and personalized event planning tools. Join our community today to
+              start turning your dream events into reality effortlessly.
             </p>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleLogin} className="card-body">
+            <form onSubmit={handleRegister} className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  name="name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
                   type="email"
-                  name="email"
                   placeholder="email"
+                  name="email"
                   className="input input-bordered"
                   required
                 />
@@ -42,26 +54,36 @@ const Login = () => {
                 </label>
                 <input
                   type="password"
+                  placeholder="Password"
                   name="password"
-                  placeholder="password"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo Url</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Photo Url"
+                  name="photo"
                   className="input input-bordered"
                   required
                 />
               </div>
               <div className="form-control mt-6">
                 <button type="submit" className="btn project-btn">
-                  Login
+                  Register
                 </button>
               </div>
             </form>
             <div className="pl-10 pb-10">
-              <p className="flex items-center gap-1">
-                <span>Login With Google :</span> <FaGoogle />
-              </p>
               <p>
-                Not Registered? <br /> Please
-                <Link className="text-purple-700 ml-2 underline" to="/register">
-                  Register Here
+                Already Registered <br />
+                Please
+                <Link to="/login" className="text-purple-700 underline ml-2">
+                  Login Here
                 </Link>
               </p>
             </div>
@@ -72,4 +94,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

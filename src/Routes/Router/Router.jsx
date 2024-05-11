@@ -7,11 +7,14 @@ import AddService from "../../Components/DashBoard/AddService/AddService";
 import ManageService from "../../Components/DashBoard/ManageService/ManageService";
 import BookedService from "../../Components/DashBoard/BookedService/BookedService";
 import ToDoService from "../../Components/DashBoard/ToDoService/ToDoService";
+import ErrorPage from "../../Components/ErrorPage/ErrorPage";
+import Register from "../../Components/Register/Register";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       { path: "/", element: <Home></Home> },
       { path: "/services", element: <Services></Services> },
@@ -20,6 +23,7 @@ const Router = createBrowserRouter([
       { path: "/manageService", element: <ManageService></ManageService> },
       { path: "/bookedService", element: <BookedService></BookedService> },
       { path: "/toDoService", element: <ToDoService></ToDoService> },
+      { path: "/register", element: <Register></Register> },
     ],
   },
 ]);
