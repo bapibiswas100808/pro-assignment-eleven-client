@@ -1,0 +1,31 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display SC", serif;
+}
+
+a,
+p,
+li,
+textarea,
+select,
+input,
+button {
+  font-family: "Montserrat", sans-serif;
+}
+#selectBox option:first-child {
+  display: none;
+}
+/* 
+Royal Blue: #4169E1
+Gold: #FFD700 */
