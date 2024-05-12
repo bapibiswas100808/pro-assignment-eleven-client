@@ -1,6 +1,15 @@
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const Register = () => {
+  const { createUser, updateUser } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -8,8 +17,32 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
-    console.log(name, email, password, photo);
+    if (password.length < 6) {
+      toast.error("Password Should be at least 6 character");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error("Password Must Have an UpperCase letter");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      toast.error("Password Must Have an LowerCase letter");
+      return;
+    }
+    // Create user in firebase
+    createUser(email, password)
+      .then((user) => {
+        console.log(user);
+        toast.success("Successfully registered!");
+        navigate(location?.state ? location.state : "/");
+        updateUser(name, photo)
+          .then(() => {})
+          .catch(() => {});
+        e.target.reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
   return (
     <div className="max-w-[1170px] mx-auto">
       <div className="hero min-h-screen">
@@ -51,9 +84,15 @@ const Register = () => {
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
+                  <span
+                    className="cursor-pointer relative top-10 right-5"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+                  </span>
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   name="password"
                   className="input input-bordered"
@@ -80,7 +119,7 @@ const Register = () => {
             </form>
             <div className="pl-10 pb-10">
               <p>
-                Already Registered <br />
+                Already Registered? <br />
                 Please
                 <Link to="/login" className="text-purple-700 underline ml-2">
                   Login Here

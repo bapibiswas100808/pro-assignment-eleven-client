@@ -9,6 +9,7 @@ import BookedService from "../../Components/DashBoard/BookedService/BookedServic
 import ToDoService from "../../Components/DashBoard/ToDoService/ToDoService";
 import ErrorPage from "../../Components/ErrorPage/ErrorPage";
 import Register from "../../Components/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const Router = createBrowserRouter([
   {
@@ -19,7 +20,14 @@ const Router = createBrowserRouter([
       { path: "/", element: <Home></Home> },
       { path: "/services", element: <Services></Services> },
       { path: "/login", element: <Login></Login> },
-      { path: "/addService", element: <AddService></AddService> },
+      {
+        path: "/addService",
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>{" "}
+          </PrivateRoute>
+        ),
+      },
       { path: "/manageService", element: <ManageService></ManageService> },
       { path: "/bookedService", element: <BookedService></BookedService> },
       { path: "/toDoService", element: <ToDoService></ToDoService> },

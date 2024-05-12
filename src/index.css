@@ -20,7 +20,8 @@ li,
 textarea,
 select,
 input,
-button {
+button,
+span {
   font-family: "Montserrat", sans-serif;
 }
 #selectBox option:first-child {

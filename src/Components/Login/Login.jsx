@@ -1,14 +1,56 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const Login = () => {
+  const { signIn, googleSignIn } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    if (password.length < 6) {
+      toast.error("Password Should be at least 6 character");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error("Password Must Have an UpperCase letter");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      toast.error("Password Must Have an LowerCase letter");
+      return;
+    }
+    // Sign in Firebase
+    signIn(email, password)
+      .then((user) => {
+        console.log(user);
+        e.target.reset();
+        toast.success("Successfully Logged In!");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+        console.log(error);
+      });
   };
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((res) => {
+        console.log(res.user);
+        toast.success("Successfully Logged In!");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="max-w-[1170px] mx-auto">
       <div className="hero min-h-screen">
@@ -39,9 +81,15 @@ const Login = () => {
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
+                  <span
+                    className="cursor-pointer relative top-10 right-5"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+                  </span>
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
@@ -56,7 +104,11 @@ const Login = () => {
             </form>
             <div className="pl-10 pb-10">
               <p className="flex items-center gap-1">
-                <span>Login With Google :</span> <FaGoogle />
+                <span>Login With Google :</span>{" "}
+                <FaGoogle
+                  className="cursor-pointer"
+                  onClick={handleGoogleSignIn}
+                />
               </p>
               <p>
                 Not Registered? <br /> Please
