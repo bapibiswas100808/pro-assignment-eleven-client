@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import loadingImg from "../../assets/images/loading.gif";
+import { Link } from "react-router-dom";
 
 const PopularServices = () => {
   const [services, setServices] = useState([]);
@@ -60,21 +61,24 @@ const PopularServices = () => {
                             </span>
                             {service?.price}
                           </p>
-                          <p>
+                          {/* <p>
                             <span className="text-lg font-bold mr-2">
                               Service Area:
                             </span>
                             {service?.serviceArea}
-                          </p>
+                          </p> */}
                         </div>
-                        <div className="flex flex-col md:flex-row lg:flex-row items-center gap-10">
+                        <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5">
                           <p className="font-bold text-lg">Provider:</p>
                           <img
-                            className="rounded-full h-20"
+                            className="rounded-full h-12"
                             src={service.providerImage}
                             alt=""
                           />
-                          <p>{service.providerName}</p>
+                          <p>
+                            <span className="mr-2 font-semibold">Name:</span>
+                            {service.providerName}
+                          </p>
                           <button className="btn project-btn">
                             View Details
                           </button>
@@ -85,6 +89,11 @@ const PopularServices = () => {
                 </div>
               ))}
             </div>
+          </div>
+          <div className="mt-5 lg:mt-10 flex justify-center">
+            <Link to="/services" className="btn project-btn">
+              Show All Service
+            </Link>
           </div>
         </>
       )}

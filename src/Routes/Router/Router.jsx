@@ -18,7 +18,11 @@ const Router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       { path: "/", element: <Home></Home> },
-      { path: "/services", element: <Services></Services> },
+      {
+        path: "/services",
+        element: <Services></Services>,
+        loader: () => fetch("http://localhost:5000/allServices"),
+      },
       { path: "/login", element: <Login></Login> },
       {
         path: "/addService",

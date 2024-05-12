@@ -6,7 +6,8 @@ const Footer = () => {
         <aside>
           <img className="max-h-32" src={footerImage} alt="" />
           <p className="font-bold">
-            DreamDay Event <br />
+            <span className="text-2xl"> DreamDay Event Manager</span>
+            <br />
             Providing reliable tech since 1992
           </p>
           <p>Copyright © 2024 - All right reserved</p>
