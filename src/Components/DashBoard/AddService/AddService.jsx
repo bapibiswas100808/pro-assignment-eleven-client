@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddService = () => {
   const { user } = useContext(AuthContext);
@@ -14,7 +16,7 @@ const AddService = () => {
     const providerName = user?.displayName;
     const providerEmail = user?.email;
     const providerImage = user?.photoURL;
-    console.log(
+    const newService = {
       photo,
       price,
       serviceName,
@@ -22,8 +24,25 @@ const AddService = () => {
       description,
       providerName,
       providerEmail,
-      providerImage
-    );
+      providerImage,
+    };
+    axios
+      .post("http://localhost:5000/allServices", newService)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Service added Successfully",
+            icon: "success",
+            confirmButtonText: "Continue",
+          });
+          form.reset();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="max-w-[1170px] mx-auto">
