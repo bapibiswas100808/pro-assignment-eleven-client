@@ -1,7 +1,102 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+
 const AddService = () => {
+  const { user } = useContext(AuthContext);
+  const handleAddService = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const photo = form.photo.value;
+    const price = form.price.value;
+    const serviceName = form.serviceName.value;
+    const serviceArea = form.serviceArea.value;
+    const description = form.description.value;
+    const providerName = user?.displayName;
+    const providerEmail = user?.email;
+    const providerImage = user?.photoURL;
+    console.log(
+      photo,
+      price,
+      serviceName,
+      serviceArea,
+      description,
+      providerName,
+      providerEmail,
+      providerImage
+    );
+  };
   return (
-    <div>
-      <h2>This is add service</h2>
+    <div className="max-w-[1170px] mx-auto">
+      <h2 className="font-bold text-2xl text-center py-5">Add a New Service</h2>
+      {/* photo & Service Name */}
+      <div className="pb-10">
+        <form onSubmit={handleAddService}>
+          <div className="flex flex-col md:flex-row lg:flex-row gap-5">
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text">Photo URL</span>
+              </div>
+              <input
+                type="text"
+                placeholder="Photo URL"
+                className="input input-bordered w-full"
+                name="photo"
+              />
+            </label>
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text">Service Name</span>
+              </div>
+              <input
+                type="text"
+                placeholder="Service Name"
+                className="input input-bordered w-full"
+                name="serviceName"
+              />
+            </label>
+          </div>
+
+          {/* price & Service area */}
+          <div className="flex flex-col md:flex-row lg:flex-row gap-5">
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text">Price</span>
+              </div>
+              <input
+                type="number"
+                placeholder="Price"
+                name="price"
+                className="input input-bordered w-full"
+              />
+            </label>
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text">Service Area</span>
+              </div>
+              <input
+                type="text"
+                placeholder="Service Area"
+                name="serviceArea"
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+          {/* Description */}
+          <label className="form-control">
+            <div className="label">
+              <span className="label-text">Description</span>
+            </div>
+            <textarea
+              className="textarea textarea-bordered h-24"
+              placeholder="Description"
+              name="description"
+            ></textarea>
+          </label>
+          <button type="submit" className="btn project-btn mt-5 w-full">
+            Add Service
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
