@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const Services = () => {
@@ -53,7 +53,12 @@ const Services = () => {
                         <span className="mr-2 font-semibold">Name:</span>
                         {service.providerName}
                       </p>
-                      <button className="btn project-btn">View Details</button>
+                      <Link
+                        to={`/singleService/${service._id}`}
+                        className="btn project-btn"
+                      >
+                        View Details
+                      </Link>
                     </div>
                   </div>
                 </div>

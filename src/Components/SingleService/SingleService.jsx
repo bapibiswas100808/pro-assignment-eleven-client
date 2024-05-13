@@ -1,10 +1,14 @@
-import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { Link, useLoaderData } from "react-router-dom";
 
 const SingleService = () => {
   const service = useLoaderData();
   console.log(service);
   return (
     <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-10">
+      <Helmet>
+        <title>DreamDay|{service.serviceName}</title>
+      </Helmet>
       <div className="text-center">
         <h2 className="text-3xl font-bold mb-5 lg:mb-10 border-b-2 border-red-500 inline-block pb-2">
           Service: {service.serviceName}
@@ -53,7 +57,12 @@ const SingleService = () => {
                 {service.providerName}
               </p>
             </div>
-            <button className="btn project-btn mt-5">Book Now</button>
+            <Link
+              to={`/bookingService/${service._id}`}
+              className="btn project-btn mt-5"
+            >
+              Book Now
+            </Link>
           </div>
         </div>
       </div>
