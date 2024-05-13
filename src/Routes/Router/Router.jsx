@@ -43,7 +43,14 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      { path: "/bookedService", element: <BookedService></BookedService> },
+      {
+        path: "/bookedService",
+        element: (
+          <PrivateRoute>
+            <BookedService></BookedService>
+          </PrivateRoute>
+        ),
+      },
       { path: "/toDoService", element: <ToDoService></ToDoService> },
       { path: "/register", element: <Register></Register> },
       {
