@@ -3,6 +3,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const ManageService = () => {
   const { user } = useContext(AuthContext);
@@ -17,7 +18,36 @@ const ManageService = () => {
         console.log(err);
       });
   }, [user]);
-  console.log(services);
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:5000/allServices/${id}`, {
+            method: "DELETE",
+          })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Craft has been deleted.",
+                icon: "success",
+              });
+              const remaining = services.filter((ser) => ser._id !== id);
+              setServices(remaining);
+            }
+          });
+      }
+    });
+  };
   return (
     <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-10">
       <Helmet>
@@ -73,7 +103,10 @@ const ManageService = () => {
                     >
                       Update Service
                     </Link>
-                    <button className="btn text-white bg-red-600 hover:bg-black">
+                    <button
+                      onClick={() => handleDelete(service._id)}
+                      className="btn text-white bg-red-600 hover:bg-black"
+                    >
                       Delete Service
                     </button>
                   </div>
