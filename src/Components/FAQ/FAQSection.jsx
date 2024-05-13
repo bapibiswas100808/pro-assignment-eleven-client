@@ -29,7 +29,7 @@ const FAQSection = () => {
           </div>
           <div className="w-full">
             {/* faq 1 */}
-            <div className="collapse collapse-arrow w-full">
+            <div className="collapse collapse-arrow border-b-2">
               <input type="radio" name="my-accordion-2" defaultChecked />
               <div className="collapse-title text-xl font-medium">
                 How far in advance should I book my event with Dreamday Event
@@ -45,7 +45,7 @@ const FAQSection = () => {
               </div>
             </div>
             {/* faq 2 */}
-            <div className="collapse collapse-arrow ">
+            <div className="collapse collapse-arrow border-b-2">
               <input type="radio" name="my-accordion-2" />
               <div className="collapse-title text-xl font-medium">
                 What types of events does Dreamday Event Management specialize
@@ -61,7 +61,7 @@ const FAQSection = () => {
               </div>
             </div>
             {/* faq 3 */}
-            <div className="collapse collapse-arrow ">
+            <div className="collapse collapse-arrow border-b-2">
               <input type="radio" name="my-accordion-2" />
               <div className="collapse-title text-xl font-medium">
                 Can I customize the services offered by Dreamday Event
@@ -77,7 +77,7 @@ const FAQSection = () => {
               </div>
             </div>
             {/* faq 4 */}
-            <div className="collapse collapse-arrow ">
+            <div className="collapse collapse-arrow border-b-2">
               <input type="radio" name="my-accordion-2" />
               <div className="collapse-title text-xl font-medium">
                 How does Dreamday Event Management handle unforeseen
