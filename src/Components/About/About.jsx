@@ -1,7 +1,7 @@
 import aboutImage from "../../assets/images/20.png";
 const About = () => {
   return (
-    <div className="max-w-[1170px] mx-auto py-5 lg:py-10 px-3 lg:px-0">
+    <div className="max-w-[1170px] mx-auto py-5 lg:py-10 px-3 lg:px-0 border-b-2">
       <h2 className="text-3xl font-bold text-center mb-5 lg:mb-10">About Us</h2>
       <div>
         <div className="hero">

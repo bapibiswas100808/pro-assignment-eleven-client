@@ -27,7 +27,7 @@ const PopularServices = () => {
       console.log(err);
     });
   return (
-    <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-20">
+    <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-10 border-b-2">
       {loading ? (
         <p className="flex justify-center items-center">
           <img className="rounded-3xl h-40" src={loadingImg} alt="" />
