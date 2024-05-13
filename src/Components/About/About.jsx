@@ -2,7 +2,11 @@ import aboutImage from "../../assets/images/20.png";
 const About = () => {
   return (
     <div className="max-w-[1170px] mx-auto py-5 lg:py-10 px-3 lg:px-0 border-b-2">
-      <h2 className="text-3xl font-bold text-center mb-5 lg:mb-10">About Us</h2>
+      <div className="text-center">
+        <h2 className="text-3xl font-bold mb-5 lg:mb-10 border-b-2 border-red-500 inline-block pb-2">
+          About Us
+        </h2>
+      </div>
       <div>
         <div className="hero">
           <div className="flex flex-col lg:flex-row-reverse gap-10 items-top">

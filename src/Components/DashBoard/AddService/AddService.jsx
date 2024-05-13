@@ -50,7 +50,11 @@ const AddService = () => {
       <Helmet>
         <title>DreamDay|Add Service</title>
       </Helmet>
-      <h2 className="font-bold text-2xl text-center py-5">Add a New Service</h2>
+      <div className="text-center">
+        <h2 className="text-3xl font-bold mb-5 lg:mb-10 border-b-2 border-red-500 inline-block pb-2 mt-10">
+          Add A Service
+        </h2>
+      </div>
       {/* photo & Service Name */}
       <div className="pb-10">
         <form onSubmit={handleAddService}>

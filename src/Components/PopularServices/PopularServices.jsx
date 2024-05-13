@@ -35,9 +35,11 @@ const PopularServices = () => {
       ) : (
         <>
           <div>
-            <h2 className="text-3xl font-bold text-center mb-5">
-              Popular Services
-            </h2>
+            <div className="text-center">
+              <h2 className="text-3xl font-bold mb-5 lg:mb-10 border-b-2 border-red-500 inline-block pb-2">
+                Popular Services
+              </h2>
+            </div>
             <div className="grid grid-cols-1  gap-5">
               {services?.slice(0, 6).map((service, idx) => (
                 <div className="border rounded-lg" key={idx}>

@@ -8,9 +8,11 @@ const Services = () => {
       <Helmet>
         <title>DreamDay|Services</title>
       </Helmet>
-      <h2 className="text-3xl font-bold text-center mb-5 lg:mb-10">
-        All Services
-      </h2>
+      <div className="text-center">
+        <h2 className="text-3xl font-bold mb-5 lg:mb-10 border-b-2 border-red-500 inline-block pb-2">
+          All Services
+        </h2>
+      </div>
       <div>
         <div className="grid grid-cols-1  gap-5">
           {allServices?.map((service, idx) => (
