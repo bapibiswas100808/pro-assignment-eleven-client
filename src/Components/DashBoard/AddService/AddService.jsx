@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddService = () => {
   const { user } = useContext(AuthContext);
@@ -46,6 +47,9 @@ const AddService = () => {
   };
   return (
     <div className="max-w-[1170px] mx-auto">
+      <Helmet>
+        <title>DreamDay|Add Service</title>
+      </Helmet>
       <h2 className="font-bold text-2xl text-center py-5">Add a New Service</h2>
       {/* photo & Service Name */}
       <div className="pb-10">

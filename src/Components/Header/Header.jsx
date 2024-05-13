@@ -12,7 +12,11 @@ const Header = () => {
       <div className="navbar max-w-[1170px] mx-auto text-white">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="mr-2 bg-green-600 p-2 rounded-lg lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -59,8 +63,11 @@ const Header = () => {
               )}
             </ul>
           </div>
-          <Link to="/" className="text-xl font-bold flex items-top gap-3">
-            <div>
+          <Link
+            to="/"
+            className="text-lg lg:text-xl font-bold flex items-top gap-3"
+          >
+            <div className="hidden lg:block">
               <img className="h-16" src={headerImage} alt="" />
             </div>
             <div>

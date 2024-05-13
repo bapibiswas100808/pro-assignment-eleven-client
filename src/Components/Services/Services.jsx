@@ -1,9 +1,13 @@
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   const allServices = useLoaderData();
   return (
     <div className="max-w-[1170px] mx-auto py-5 lg:py-10 px-3 lg:px-0">
+      <Helmet>
+        <title>DreamDay|Services</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center mb-5 lg:mb-10">
         All Services
       </h2>
@@ -11,7 +15,7 @@ const Services = () => {
         <div className="grid grid-cols-1  gap-5">
           {allServices?.map((service, idx) => (
             <div className="border rounded-lg" key={idx}>
-              <div className="hero">
+              <div className="hero skeleton">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                   <div className="w-full ">
                     <img
