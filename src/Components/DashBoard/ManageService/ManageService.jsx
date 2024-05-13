@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const ManageService = () => {
   const { user } = useContext(AuthContext);
@@ -19,6 +20,9 @@ const ManageService = () => {
   console.log(services);
   return (
     <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-10">
+      <Helmet>
+        <title>DreamDay|Manage Service</title>
+      </Helmet>
       <div className="text-center">
         <h2 className="text-3xl font-bold mb-5 lg:mb-10 border-b-2 border-red-500 inline-block pb-2">
           Manage Your Services

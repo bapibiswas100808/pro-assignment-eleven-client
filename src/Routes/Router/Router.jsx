@@ -12,6 +12,7 @@ import Register from "../../Components/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SingleService from "../../Components/SingleService/SingleService";
 import BookingService from "../../Components/BookingService/BookingService";
+import UpdateService from "../../Components/UpdateService/UpdateService";
 
 const Router = createBrowserRouter([
   {
@@ -45,6 +46,12 @@ const Router = createBrowserRouter([
       { path: "/bookedService", element: <BookedService></BookedService> },
       { path: "/toDoService", element: <ToDoService></ToDoService> },
       { path: "/register", element: <Register></Register> },
+      {
+        path: "/updateService/:id",
+        element: <UpdateService></UpdateService>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allServices/${params.id}`),
+      },
       {
         path: "/bookingService/:id",
         element: <BookingService></BookingService>,

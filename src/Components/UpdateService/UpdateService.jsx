@@ -1,12 +1,13 @@
-import { useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Helmet } from "react-helmet-async";
 
-const AddService = () => {
-  const { user } = useContext(AuthContext);
-  const handleAddService = (e) => {
+const UpdateService = () => {
+  const updatedService = useLoaderData();
+  console.log(updatedService);
+
+  const handleUpdateService = (e) => {
     e.preventDefault();
     const form = e.target;
     const photo = form.photo.value;
@@ -14,31 +15,27 @@ const AddService = () => {
     const serviceName = form.serviceName.value;
     const serviceArea = form.serviceArea.value;
     const description = form.description.value;
-    const providerName = user?.displayName;
-    const providerEmail = user?.email;
-    const providerImage = user?.photoURL;
-    const newService = {
+    const updatedData = {
       photo,
       price,
       serviceName,
       serviceArea,
       description,
-      providerName,
-      providerEmail,
-      providerImage,
     };
     axios
-      .post("http://localhost:5000/allServices", newService)
+      .put(
+        `http://localhost:5000/allServices/${updatedService._id}`,
+        updatedData
+      )
       .then((res) => {
         console.log(res.data);
-        if (res.data.insertedId) {
+        if (res.data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "Service added Successfully",
+            text: "Service Updated Successfully",
             icon: "success",
             confirmButtonText: "Continue",
           });
-          form.reset();
         }
       })
       .catch((err) => {
@@ -46,18 +43,17 @@ const AddService = () => {
       });
   };
   return (
-    <div className="max-w-[1170px] mx-auto">
+    <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-10">
       <Helmet>
-        <title>DreamDay|Add Service</title>
+        <title>DreamDay|Update Service</title>
       </Helmet>
       <div className="text-center">
-        <h2 className="text-3xl font-bold mb-5 lg:mb-10 border-b-2 border-red-500 inline-block pb-2 mt-10">
-          Add A Service
+        <h2 className="text-3xl font-bold mb-5 lg:mb-10 border-b-2 border-red-500 inline-block pb-2">
+          Update This Service
         </h2>
       </div>
-      {/* photo & Service Name */}
       <div className="pb-10">
-        <form onSubmit={handleAddService}>
+        <form onSubmit={handleUpdateService}>
           <div className="flex flex-col md:flex-row lg:flex-row gap-5">
             <label className="form-control w-full">
               <div className="label">
@@ -66,6 +62,7 @@ const AddService = () => {
               <input
                 type="text"
                 placeholder="Photo URL"
+                defaultValue={updatedService.photo}
                 className="input input-bordered w-full"
                 name="photo"
                 required
@@ -78,6 +75,7 @@ const AddService = () => {
               <input
                 type="text"
                 placeholder="Service Name"
+                defaultValue={updatedService.serviceName}
                 className="input input-bordered w-full"
                 name="serviceName"
                 required
@@ -94,6 +92,7 @@ const AddService = () => {
               <input
                 type="number"
                 placeholder="Price"
+                defaultValue={updatedService.price}
                 name="price"
                 className="input input-bordered w-full"
                 required
@@ -106,6 +105,7 @@ const AddService = () => {
               <input
                 type="text"
                 placeholder="Service Area"
+                defaultValue={updatedService.serviceArea}
                 name="serviceArea"
                 className="input input-bordered w-full"
                 required
@@ -121,11 +121,12 @@ const AddService = () => {
               className="textarea textarea-bordered h-24"
               placeholder="Description"
               name="description"
+              defaultValue={updatedService.description}
               required
             ></textarea>
           </label>
           <button type="submit" className="btn project-btn mt-5 w-full">
-            Add Service
+            Update Service
           </button>
         </form>
       </div>
@@ -133,4 +134,4 @@ const AddService = () => {
   );
 };
 
-export default AddService;
+export default UpdateService;
