@@ -10,6 +10,7 @@ import ToDoService from "../../Components/DashBoard/ToDoService/ToDoService";
 import ErrorPage from "../../Components/ErrorPage/ErrorPage";
 import Register from "../../Components/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SingleService from "../../Components/SingleService/SingleService";
 
 const Router = createBrowserRouter([
   {
@@ -36,6 +37,16 @@ const Router = createBrowserRouter([
       { path: "/bookedService", element: <BookedService></BookedService> },
       { path: "/toDoService", element: <ToDoService></ToDoService> },
       { path: "/register", element: <Register></Register> },
+      {
+        path: "/singleService/:id",
+        element: (
+          <PrivateRoute>
+            <SingleService></SingleService>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allServices/${params.id}`),
+      },
     ],
   },
 ]);

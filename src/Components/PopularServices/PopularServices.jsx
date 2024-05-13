@@ -81,9 +81,12 @@ const PopularServices = () => {
                             <span className="mr-2 font-semibold">Name:</span>
                             {service.providerName}
                           </p>
-                          <button className="btn project-btn">
+                          <Link
+                            to={`/singleService/${service._id}`}
+                            className="btn project-btn"
+                          >
                             View Details
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
