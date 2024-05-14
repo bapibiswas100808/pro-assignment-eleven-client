@@ -23,7 +23,7 @@ const Banner = () => {
     setTypewriterKey((prevKey) => prevKey + 1);
   };
   return (
-    <div className="banner">
+    <div className="banner-area">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={50}
@@ -40,7 +40,7 @@ const Banner = () => {
         }}
       >
         <SwiperSlide>
-          <div className="lg:h-screen banner-area">
+          <div className="lg:h-screen">
             <div
               className="hero min-h-screen"
               style={{

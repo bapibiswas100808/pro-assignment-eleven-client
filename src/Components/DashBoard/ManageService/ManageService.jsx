@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 const ManageService = () => {
   const { user } = useContext(AuthContext);
   const [services, setServices] = useState([]);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     axios
       .get(`http://localhost:5000/myService/${user?.email}`)
@@ -58,66 +59,80 @@ const ManageService = () => {
           Manage Your Services
         </h2>
       </div>
+      <div>
+        <input
+          onChange={(e) => setSearch(e.target.value)}
+          type="text"
+          placeholder="Search here"
+          className="input input-bordered input-primary w-full mb-5"
+        />
+      </div>
       {services?.length > 0 ? (
         <div className="grid grid-cols-1 gap-5">
-          {services?.map((service, idx) => (
-            <div className="border rounded-lg" key={idx}>
-              <div className="hero">
-                <div className="hero-content flex-col lg:flex-row">
-                  <div className="w-full ">
-                    <img
-                      src={service?.photo}
-                      className=" rounded-lg shadow-2xl"
-                    />
-                  </div>
-                  <div className="w-full">
-                    <h1 className="text-2xl font-bold">
-                      {service.serviceName}
-                    </h1>
-                    <p className="py-6">{service.description}</p>
-                    <div className="flex items-center gap-10 mb-3">
-                      <p>
-                        <span className="text-lg font-bold mr-2">Price:</span>
-                        {service?.price}
-                      </p>
-                      <p>
-                        <span className="text-lg font-bold mr-2">
-                          Service Area:
-                        </span>
-                        {service?.serviceArea}
-                      </p>
-                    </div>
-                    <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5">
-                      <p className="font-bold text-lg">Provider:</p>
+          {services
+            ?.filter((item) => {
+              return search.toLowerCase() === ""
+                ? item
+                : item.serviceName.toLowerCase().includes(search);
+            })
+            .map((service, idx) => (
+              <div className="border rounded-lg" key={idx}>
+                <div className="hero">
+                  <div className="hero-content flex-col lg:flex-row">
+                    <div className="w-full ">
                       <img
-                        className="rounded-full h-10"
-                        src={service.providerImage}
-                        alt=""
+                        src={service?.photo}
+                        className=" rounded-lg shadow-2xl"
                       />
-                      <p>
-                        <span className="mr-2 font-semibold">Name:</span>
-                        {service.providerName}
-                      </p>
                     </div>
-                    <div className="flex gap-5 mt-5">
-                      <Link
-                        to={`/updateService/${service._id}`}
-                        className="btn project-btn"
-                      >
-                        Update Service
-                      </Link>
-                      <button
-                        onClick={() => handleDelete(service._id)}
-                        className="btn text-white bg-red-600 hover:bg-black"
-                      >
-                        Delete Service
-                      </button>
+                    <div className="w-full">
+                      <h1 className="text-2xl font-bold">
+                        {service.serviceName}
+                      </h1>
+                      <p className="py-6">{service.description}</p>
+                      <div className="flex items-center gap-10 mb-3">
+                        <p>
+                          <span className="text-lg font-bold mr-2">Price:</span>
+                          {service?.price}
+                        </p>
+                        <p>
+                          <span className="text-lg font-bold mr-2">
+                            Service Area:
+                          </span>
+                          {service?.serviceArea}
+                        </p>
+                      </div>
+                      <div className="flex flex-col md:flex-row lg:flex-row items-center gap-5">
+                        <p className="font-bold text-lg">Provider:</p>
+                        <img
+                          className="rounded-full h-10"
+                          src={service.providerImage}
+                          alt=""
+                        />
+                        <p>
+                          <span className="mr-2 font-semibold">Name:</span>
+                          {service.providerName}
+                        </p>
+                      </div>
+                      <div className="flex gap-5 mt-5">
+                        <Link
+                          to={`/updateService/${service._id}`}
+                          className="btn project-btn"
+                        >
+                          Update Service
+                        </Link>
+                        <button
+                          onClick={() => handleDelete(service._id)}
+                          className="btn text-white bg-red-600 hover:bg-black"
+                        >
+                          Delete Service
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       ) : (
         <div>

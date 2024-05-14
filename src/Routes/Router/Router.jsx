@@ -51,7 +51,11 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      { path: "/toDoService", element: <ToDoService></ToDoService> },
+      {
+        path: "/toDoService",
+        element: <ToDoService></ToDoService>,
+        loader: () => fetch("http://localhost:5000/allBookings"),
+      },
       { path: "/register", element: <Register></Register> },
       {
         path: "/updateService/:id",

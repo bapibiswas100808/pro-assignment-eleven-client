@@ -43,7 +43,7 @@ span {
   --bs-bg-outlet: #ffffff;
   --var-bar-bg: #ffffff;
   --var-text-color: #333333;
-  --var-heading-color: #ffffff;
+  --var-heading-color: #008080;
   --var-card-bg: #ffffff;
   --bs-table-text-color: #333333;
   --bs-table-color-state: #ffffff;
@@ -66,6 +66,9 @@ span {
   --bs-label-color: #ffffff;
   --bs-header-link-color: #ffffff;
   --bs-table-text-color-state: #ffffff;
+}
+.banner-area h1 {
+  color: var(--bs-banner-color) !important;
 }
 
 .top-side {
