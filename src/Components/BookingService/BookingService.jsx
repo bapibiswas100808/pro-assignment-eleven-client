@@ -37,9 +37,12 @@ const BookingService = () => {
       instruction,
     };
     axios
-      .post("http://localhost:5000/allBookings", newBooking)
+      .post(
+        "https://pro-assignment-eleven-server.vercel.app/allBookings",
+        newBooking
+      )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
             title: "Success!",

@@ -9,7 +9,12 @@ const BookedService = () => {
   const [search, setSearch] = useState("");
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/myBooking/${user?.email}`)
+      .get(
+        `https://pro-assignment-eleven-server.vercel.app/myBooking/${user?.email}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         setBooking(res.data);
       })
@@ -17,7 +22,7 @@ const BookedService = () => {
         console.log(err);
       });
   }, [user]);
-  console.log(booking);
+  // console.log(booking);
   return (
     <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-10">
       <Helmet>
@@ -40,9 +45,11 @@ const BookedService = () => {
         <div className="grid grid-cols-1 gap-5">
           {booking
             ?.filter((item) => {
-              return search.toLowerCase() === ""
+              const searchLowerCase = search.toLowerCase();
+              const serviceNameLowerCase = item.serviceName.toLowerCase();
+              return searchLowerCase === ""
                 ? item
-                : item.serviceName.toLowerCase().includes(search);
+                : serviceNameLowerCase.includes(searchLowerCase);
             })
             .map((service, idx) => (
               <div className="border rounded-lg" key={idx}>

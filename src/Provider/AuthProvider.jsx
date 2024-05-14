@@ -61,20 +61,28 @@ const AuthProvider = ({ children }) => {
       // if user exists
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://pro-assignment-eleven-server.vercel.app/jwt",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
-            console.log("token response: ", res.data);
+            console.log("token response: ", res);
           })
           .catch((err) => {
             console.log(err);
           });
       } else {
         axios
-          .post("http://localhost:5000/logOut", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://pro-assignment-eleven-server.vercel.app/logOut",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log(res.data);
           })

@@ -11,7 +11,12 @@ const ManageService = () => {
   const [search, setSearch] = useState("");
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/myService/${user?.email}`)
+      .get(
+        `https://pro-assignment-eleven-server.vercel.app/myService/${user?.email}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         setServices(res.data);
       })
@@ -31,15 +36,18 @@ const ManageService = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/allServices/${id}`, {
-            method: "DELETE",
-          })
+          .delete(
+            `https://pro-assignment-eleven-server.vercel.app/allServices/${id}`,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your Craft has been deleted.",
+                text: "Your Service has been deleted.",
                 icon: "success",
               });
               const remaining = services.filter((ser) => ser._id !== id);
@@ -71,9 +79,11 @@ const ManageService = () => {
         <div className="grid grid-cols-1 gap-5">
           {services
             ?.filter((item) => {
-              return search.toLowerCase() === ""
+              const searchLowerCase = search.toLowerCase();
+              const serviceNameLowerCase = item.serviceName.toLowerCase();
+              return searchLowerCase === ""
                 ? item
-                : item.serviceName.toLowerCase().includes(search);
+                : serviceNameLowerCase.includes(searchLowerCase);
             })
             .map((service, idx) => (
               <div className="border rounded-lg" key={idx}>

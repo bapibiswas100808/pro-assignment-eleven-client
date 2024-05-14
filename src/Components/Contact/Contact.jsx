@@ -57,7 +57,7 @@ const Contact = () => {
                 />
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Contact Us</button>
+                <button className="btn project-btn">Contact Us</button>
               </div>
             </form>
           </div>

@@ -8,7 +8,9 @@ const PopularServices = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/allServices")
+      .get("https://pro-assignment-eleven-server.vercel.app/allServices", {
+        withCredentials: true,
+      })
       .then((res) => {
         setServices(res.data);
         setLoading(false);

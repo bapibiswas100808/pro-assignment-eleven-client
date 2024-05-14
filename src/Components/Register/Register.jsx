@@ -41,6 +41,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.log(error);
+        // toast.error(error);
       });
   };
 
@@ -125,7 +126,10 @@ const Register = () => {
               <p>
                 Already Registered? <br />
                 Please
-                <Link to="/login" className="text-purple-700 underline ml-2">
+                <Link
+                  to="/login"
+                  className="text-purple-700 underline ml-2 bg-green-700 px-2 py-1"
+                >
                   Login Here
                 </Link>
               </p>

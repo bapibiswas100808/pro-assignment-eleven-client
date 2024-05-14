@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 const ToDoService = () => {
   const allBookedService = useLoaderData();
   const [search, setSearch] = useState("");
+
   return (
     <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-10">
       <Helmet>
@@ -28,9 +29,11 @@ const ToDoService = () => {
         <div className="grid grid-cols-1 gap-5">
           {allBookedService
             ?.filter((item) => {
-              return search.toLowerCase() === ""
+              const searchLowerCase = search.toLowerCase();
+              const serviceNameLowerCase = item.serviceName.toLowerCase();
+              return searchLowerCase === ""
                 ? item
-                : item.serviceName.toLowerCase().includes(search);
+                : serviceNameLowerCase.includes(searchLowerCase);
             })
             .map((service, idx) => (
               <div className="border rounded-lg" key={idx}>

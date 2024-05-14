@@ -28,9 +28,12 @@ const AddService = () => {
       providerImage,
     };
     axios
-      .post("http://localhost:5000/allServices", newService)
+      .post(
+        "https://pro-assignment-eleven-server.vercel.app/allServices",
+        newService
+      )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
             title: "Success!",

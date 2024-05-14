@@ -116,7 +116,10 @@ const Login = () => {
               </p>
               <p>
                 Not Registered? <br /> Please
-                <Link className="text-purple-700 ml-2 underline" to="/register">
+                <Link
+                  className="text-purple-700 ml-2 underline bg-green-700 px-2 py-1"
+                  to="/register"
+                >
                   Register Here
                 </Link>
               </p>

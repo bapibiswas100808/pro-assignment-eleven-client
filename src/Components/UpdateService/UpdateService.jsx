@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const UpdateService = () => {
   const updatedService = useLoaderData();
-  console.log(updatedService);
+  // console.log(updatedService);
 
   const handleUpdateService = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ const UpdateService = () => {
     };
     axios
       .put(
-        `http://localhost:5000/allServices/${updatedService._id}`,
+        `https://pro-assignment-eleven-server.vercel.app/allServices/${updatedService._id}`,
         updatedData
       )
       .then((res) => {

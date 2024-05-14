@@ -6,13 +6,14 @@ import Login from "../../Components/Login/Login";
 import AddService from "../../Components/DashBoard/AddService/AddService";
 import ManageService from "../../Components/DashBoard/ManageService/ManageService";
 import BookedService from "../../Components/DashBoard/BookedService/BookedService";
-import ToDoService from "../../Components/DashBoard/ToDoService/ToDoService";
+
 import ErrorPage from "../../Components/ErrorPage/ErrorPage";
 import Register from "../../Components/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SingleService from "../../Components/SingleService/SingleService";
 import BookingService from "../../Components/BookingService/BookingService";
 import UpdateService from "../../Components/UpdateService/UpdateService";
+import ToDoService from "../../Components/DashBoard/ToDoService/ToDoService";
 
 const Router = createBrowserRouter([
   {
@@ -24,7 +25,8 @@ const Router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
-        loader: () => fetch("http://localhost:5000/allServices"),
+        loader: () =>
+          fetch("https://pro-assignment-eleven-server.vercel.app/allServices"),
       },
       { path: "/login", element: <Login></Login> },
       {
@@ -54,20 +56,25 @@ const Router = createBrowserRouter([
       {
         path: "/toDoService",
         element: <ToDoService></ToDoService>,
-        loader: () => fetch("http://localhost:5000/allBookings"),
+        loader: () =>
+          fetch("https://pro-assignment-eleven-server.vercel.app/allBookings"),
       },
       { path: "/register", element: <Register></Register> },
       {
         path: "/updateService/:id",
         element: <UpdateService></UpdateService>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allServices/${params.id}`),
+          fetch(
+            `https://pro-assignment-eleven-server.vercel.app/allServices/${params.id}`
+          ),
       },
       {
         path: "/bookingService/:id",
         element: <BookingService></BookingService>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allServices/${params.id}`),
+          fetch(
+            `https://pro-assignment-eleven-server.vercel.app/allServices/${params.id}`
+          ),
       },
       {
         path: "/singleService/:id",
@@ -77,7 +84,9 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allServices/${params.id}`),
+          fetch(
+            `https://pro-assignment-eleven-server.vercel.app/allServices/${params.id}`
+          ),
       },
     ],
   },
