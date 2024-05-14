@@ -2,7 +2,7 @@ import footerImage from "../../assets/images/D.png";
 import { FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
-    <div className="bg-[#008080]">
+    <div className="header-area">
       <footer className="footer footer-center p-10 max-w-[1170px] mx-auto text-white">
         <aside>
           <img className="max-h-32" src={footerImage} alt="" />

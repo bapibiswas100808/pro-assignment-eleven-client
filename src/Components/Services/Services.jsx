@@ -17,7 +17,7 @@ const Services = () => {
         <div className="grid grid-cols-1  gap-5">
           {allServices?.map((service, idx) => (
             <div className="border rounded-lg" key={idx}>
-              <div className="hero skeleton">
+              <div className="hero">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                   <div className="w-full ">
                     <img

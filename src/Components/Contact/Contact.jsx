@@ -1,6 +1,6 @@
 const Contact = () => {
   return (
-    <div className="max-w-[1170px] mx-auto mb-20  pt-5">
+    <div className="max-w-[1170px] mx-auto px-3 lg:px-0 pb-20  pt-5">
       <div className="text-center">
         <h2 className="text-3xl font-bold mb-5 lg:mb-10 border-b-2 border-red-500 inline-block pb-2">
           Contact Us

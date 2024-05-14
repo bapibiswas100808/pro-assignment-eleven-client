@@ -31,7 +31,7 @@ const FAQSection = () => {
             {/* faq 1 */}
             <div className="collapse collapse-arrow border-b-2">
               <input type="radio" name="my-accordion-2" defaultChecked />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-[#008080]">
                 How far in advance should I book my event with Dreamday Event
                 Management?
               </div>
@@ -47,7 +47,7 @@ const FAQSection = () => {
             {/* faq 2 */}
             <div className="collapse collapse-arrow border-b-2">
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-[#008080]">
                 What types of events does Dreamday Event Management specialize
                 in?
               </div>
@@ -63,7 +63,7 @@ const FAQSection = () => {
             {/* faq 3 */}
             <div className="collapse collapse-arrow border-b-2">
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-[#008080]">
                 Can I customize the services offered by Dreamday Event
                 Management?
               </div>
@@ -79,7 +79,7 @@ const FAQSection = () => {
             {/* faq 4 */}
             <div className="collapse collapse-arrow border-b-2">
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-[#008080]">
                 How does Dreamday Event Management handle unforeseen
                 circumstances or emergencies during an event?
               </div>
@@ -95,7 +95,7 @@ const FAQSection = () => {
             {/* faq 5 */}
             <div className="collapse collapse-arrow ">
               <input type="radio" name="my-accordion-2" />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-[#008080]">
                 What is the pricing structure for Dreamday Event Management
                 services?
               </div>
