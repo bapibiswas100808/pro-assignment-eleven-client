@@ -10,7 +10,6 @@ const PopularServices = () => {
     axios
       .get("http://localhost:5000/allServices")
       .then((res) => {
-        console.log(res.data);
         setServices(res.data);
         setLoading(false);
       })
@@ -18,14 +17,7 @@ const PopularServices = () => {
         console.log(err);
       });
   }, []);
-  axios
-    .get("http://localhost:5000/allServices")
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+
   return (
     <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-10 border-b-2">
       {loading ? (
