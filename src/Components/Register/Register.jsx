@@ -41,7 +41,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.log(error);
-        // toast.error(error);
+        toast.error(error.message);
       });
   };
 
@@ -123,8 +123,8 @@ const Register = () => {
               </div>
             </form>
             <div className="pl-10 pb-10">
+              <p className="mb-2">Already Registered? </p>
               <p>
-                Already Registered? <br />
                 Please
                 <Link
                   to="/login"

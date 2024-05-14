@@ -107,15 +107,16 @@ const Login = () => {
               </div>
             </form>
             <div className="pl-10 pb-10">
-              <p className="flex items-center gap-1">
-                <span>Login With Google :</span>{" "}
+              <p className="flex items-center gap-1 mb-1">
+                <span>Login With Google :</span>
                 <FaGoogle
                   className="cursor-pointer"
                   onClick={handleGoogleSignIn}
                 />
               </p>
+              <p className="mb-2">Not Registered? </p>
               <p>
-                Not Registered? <br /> Please
+                Please
                 <Link
                   className="text-purple-700 ml-2 underline bg-green-700 px-2 py-1"
                   to="/register"
