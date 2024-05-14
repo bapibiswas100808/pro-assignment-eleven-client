@@ -1,10 +1,41 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 
 const ToDoService = () => {
-  const allBookedService = useLoaderData();
+  const bookedService = useLoaderData();
+  const [allBookedService, setAllBookedService] = useState([]);
+
+  useEffect(() => {
+    setAllBookedService(bookedService);
+  }, [bookedService]);
+
   const [search, setSearch] = useState("");
+  const handleStatus = (status, id) => {
+    axios
+      .patch(
+        `https://pro-assignment-eleven-server.vercel.app/allBookings/${id}`,
+        { status },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          axios
+            .get("https://pro-assignment-eleven-server.vercel.app/allBookings")
+            .then((res) => {
+              setAllBookedService(res.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-10">
@@ -58,12 +89,19 @@ const ToDoService = () => {
                             {service.status}
                           </span>
                         </p>
-                        <select className="select select-bordered w-full max-w-xs">
-                          <option disabled selected>
-                            Pending
+                        <select
+                          onChange={(e) =>
+                            handleStatus(e.target.value, service._id)
+                          }
+                          className="select select-bordered w-full max-w-xs"
+                          defaultValue={service.status}
+                        >
+                          <option disabled value="">
+                            Select Status
                           </option>
-                          <option>Working</option>
-                          <option>Completed</option>
+                          <option value="pending">Pending</option>
+                          <option value="working">Working</option>
+                          <option value="completed">Completed</option>
                         </select>
                       </div>
 

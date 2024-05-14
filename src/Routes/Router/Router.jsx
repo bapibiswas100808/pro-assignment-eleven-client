@@ -55,7 +55,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/toDoService",
-        element: <ToDoService></ToDoService>,
+        element: (
+          <PrivateRoute>
+            <ToDoService></ToDoService>
+          </PrivateRoute>
+        ),
         loader: () =>
           fetch("https://pro-assignment-eleven-server.vercel.app/allBookings"),
       },
