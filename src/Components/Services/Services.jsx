@@ -1,10 +1,16 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Services = () => {
   const allServices = useLoaderData();
   const [search, setSearch] = useState("");
+  const motionVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.25 } },
+  };
+  const elementVariants = { hidden: { opacity: 0 }, show: { opacity: 1 } };
   return (
     <div className="max-w-[1170px] mx-auto py-5 lg:py-10 px-3 lg:px-0">
       <Helmet>
@@ -24,7 +30,12 @@ const Services = () => {
         />
       </div>
       <div>
-        <div className="grid grid-cols-1  gap-5">
+        <motion.div
+          variants={motionVariants}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1  gap-5"
+        >
           {allServices
             ?.filter((item) => {
               const searchLowerCase = search.toLowerCase();
@@ -34,16 +45,38 @@ const Services = () => {
                 : serviceNameLowerCase.includes(searchLowerCase);
             })
             .map((service, idx) => (
-              <div className="border rounded-lg" key={idx}>
+              <motion.div
+                variants={elementVariants}
+                className="border rounded-lg"
+                key={idx}
+              >
                 <div className="hero">
                   <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="w-full ">
+                    <motion.div
+                      initial={{ opacity: 0, y: 100 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 1,
+                        ease: "easeOut",
+                        delay: 0.2,
+                      }}
+                      className="w-full "
+                    >
                       <img
                         src={service?.photo}
                         className=" rounded-lg shadow-2xl"
                       />
-                    </div>
-                    <div className="w-full">
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: -100 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 1,
+                        ease: "easeOut",
+                        delay: 0.4,
+                      }}
+                      className="w-full"
+                    >
                       <h1 className="text-2xl font-bold">
                         {service.serviceName}
                       </h1>
@@ -78,12 +111,12 @@ const Services = () => {
                           View Details
                         </Link>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

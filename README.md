@@ -16,6 +16,6 @@
 
 - Stylish and Responsive Design: Tailwind CSS and Daisy UI are used to create a stylish, responsive, and user-friendly interface.
 
-- Enhanced User Interaction: Integrated with npm packages like react-typewriter, react-tooltip, SweetAlert2, and react-hot-toast to provide engaging notifications and tooltips.
+- Enhanced User Interaction: Integrated with npm packages like framer motion, react-typewriter, react-tooltip, SweetAlert2, and react-hot-toast to provide engaging notifications and tooltips.
 
 - Comprehensive Service Management: Users can easily add, read, update, and delete services, ensuring complete control over their event management needs.

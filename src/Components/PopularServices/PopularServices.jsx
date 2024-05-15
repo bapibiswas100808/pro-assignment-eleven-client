@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import loadingImg from "../../assets/images/loading.gif";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const PopularServices = () => {
   const [services, setServices] = useState([]);
@@ -19,6 +20,11 @@ const PopularServices = () => {
         console.log(err);
       });
   }, []);
+  const motionVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.25 } },
+  };
+  const elementVariants = { hidden: { opacity: 0 }, show: { opacity: 1 } };
 
   return (
     <div className="max-w-[1170px] mx-auto px-3 lg:px-0 py-5 lg:py-10 border-b-2">
@@ -28,24 +34,51 @@ const PopularServices = () => {
         </p>
       ) : (
         <>
-          <div>
+          <div className="overflow-x-hidden">
             <div className="text-center">
               <h2 className="text-3xl font-bold mb-5 lg:mb-10 border-b-2 border-red-500 inline-block pb-2">
                 Popular Services
               </h2>
             </div>
-            <div className="grid grid-cols-1  gap-5">
+            <motion.div
+              variants={motionVariants}
+              initial="hidden"
+              animate="show"
+              className="grid grid-cols-1  gap-5"
+            >
               {services?.slice(0, 6).map((service, idx) => (
-                <div className="border rounded-lg" key={idx}>
+                <motion.div
+                  variants={elementVariants}
+                  className="border rounded-lg"
+                  key={idx}
+                >
                   <div className="hero">
                     <div className="hero-content flex-col lg:flex-row">
-                      <div className="w-full ">
+                      <motion.div
+                        initial={{ opacity: 0, y: 100 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 1,
+                          ease: "easeOut",
+                          delay: 0.2,
+                        }}
+                        className="w-full "
+                      >
                         <img
                           src={service?.photo}
                           className=" rounded-lg shadow-2xl"
                         />
-                      </div>
-                      <div className="w-full">
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: -100 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 1,
+                          ease: "easeOut",
+                          delay: 0.4,
+                        }}
+                        className="w-full"
+                      >
                         <h1 className="text-2xl font-bold">
                           {service.serviceName}
                         </h1>
@@ -82,12 +115,12 @@ const PopularServices = () => {
                             View Details
                           </Link>
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
           <div className="mt-5 lg:mt-10 flex justify-center">
             <Link to="/services" className="btn project-btn">
