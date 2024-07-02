@@ -9,13 +9,14 @@ DreamDay Event Manager is an event management website built with React, Tailwind
 - run: npm i, to get node modules
 - run: npm run dev, to open the live link
 
-### Technology Used: React, Tailwind CSS, Google Firebase, MongoDB, Node Js, Express
+### Technology Used: 
+React, Tailwind CSS, Google Firebase, MongoDB, Node Js, Express
 ### Key Features:
-- This website is built for event management service where user can book an event for their any kind of program
+- This website is built for event management service where user can book an event for any kind of program
 - Event manager companies can post their service with details and prices and they can choose which service to do
 - This website has a dark mood feature which is done for the user's good experience at night
 
-### About My Project:
+### More About My Project:
 
 - Modern Front-End with React.js: The client-side is built using React.js, ensuring a seamless and dynamic user experience.
 
