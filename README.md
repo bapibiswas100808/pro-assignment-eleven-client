@@ -1,12 +1,21 @@
-# React + Vite
-
-## Live-Link:https://pro-assignment-eleven.web.app
-
 ## Name of the Website: DreamDay Event Manager
+### Live-Link:https://pro-assignment-eleven.web.app
 
-## assignment_category_0002 (Event Management Services )
+### Project Overview:
+DreamDay Event Manager is an event management website built with React, Tailwind CSS, and Firebase. Users can book events, while event managers can post and manage services. The site features a dark mode, secure authentication, and a responsive design, providing a dynamic and user-friendly experience
 
-# About My Project:
+### Steps to Use this repository:
+- Clone the project with the repository Url
+- run: npm i, to get node modules
+- run: npm run dev, to open the live link
+
+### Technology Used: React, Tailwind CSS, Google Firebase, MongoDB, Node Js, Express
+### Key Features:
+- This website is built for event management service where user can book an event for their any kind of program
+- Event manager companies can post their service with details and prices and they can choose which service to do
+- This website has a dark mood feature which is done for the user's good experience at night
+
+### About My Project:
 
 - Modern Front-End with React.js: The client-side is built using React.js, ensuring a seamless and dynamic user experience.
 
